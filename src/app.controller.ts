@@ -36,23 +36,23 @@ export class AppController {
     }
      
     //oga to mp3
-    /*
-    try {
+    
+    //try {
       
-      const inputOgxFile = await fs.promises.readFile(base, 'utf8'); // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
-  
-      try {
-        await convertOgxToMp3(inputOgxFile, audiomp3);
-        console.log(`Archivo convertido guardado en: ${audiomp3}`);
-        const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-        console.log(uno)
+      const inputOgxFile = await fs.promises.readFile(base, {encoding:'utf8'}); // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
+  console.log(inputOgxFile)
+      //try {
+        //await convertOgxToMp3(inputOgxFile, audiomp3);
+        //console.log(`Archivo convertido guardado en: ${audiomp3}`);
+        //const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+        //console.log(uno)
         
-      } catch (error) {
-        console.error('La conversión falló:', error);
-      }
-    } catch (error) {
-      console.log('ERROR READ FILE : ', error);
-    }  */
+      //} catch (error) {
+       // console.error('La conversión falló:', error);
+      //}
+    //} catch (error) {
+      //console.log('ERROR READ FILE : ', error);
+    //}  
     
     //mp3 to base64
     
