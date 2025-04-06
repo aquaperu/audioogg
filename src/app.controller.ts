@@ -40,12 +40,11 @@ export class AppController {
     //oga to mp3
     try {
       
-      const inputOgxFile = await fs.promises.readFile(base, 'binary'); // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
+      const inputOgxFile = await fs.promises.readFile(base, 'utf8'); // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
   
-      const outputMp3File = path.join(audiomp3)
       try {
-        await convertOgxToMp3(inputOgxFile, outputMp3File);
-        console.log(`Archivo convertido guardado en: ${outputMp3File}`);
+        await convertOgxToMp3(inputOgxFile, audiomp3);
+        console.log(`Archivo convertido guardado en: ${audiomp3}`);
         const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
         console.log(uno)
         
