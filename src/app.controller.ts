@@ -22,13 +22,15 @@ export class AppController {
     //lista las carpetas
     const res = cuerpo.base64 
     const base = fixPathAudio("filteName.oga")
-    const audiomp3 = fixPathAudio("audio.mp3")
+    //const audiomp3 = fixPathAudio("audio.mp3")
     
     //base64 to oga
     try {  
       await fs.promises.writeFile(base , Buffer.from(res, 'base64'));//genera el archivo oga  
       console.log({status: 'success' });
       console.log("la ruta donde se guardó",path.join(process.cwd(),"/dist/src") )
+      const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+      console.log("lista de archivos",uno)
     } catch (error) {
       console.log('ERROR WRITE FILE : ', error);
     }
