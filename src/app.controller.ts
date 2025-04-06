@@ -19,6 +19,7 @@ export class AppController {
   }
   @Post('myogg')
   async agregaRegistro(@Body() cuerpo:any){
+    console.log("iniciando la conversion")
     const res = cuerpo.base64 
     
     //base64 to oga
@@ -39,6 +40,11 @@ export class AppController {
     
     const base64String = audiomp3;
     const contents = fs.readFileSync(base64String, {encoding: 'base64'});
+    //borrara los dos archivos
+    console.log("borrando los dos archivos")
+    fs.unlinkSync(audiomp3)
+    fs.unlinkSync(base)
+    console.log({"bybase64":contents})
 
     return {"bybase64":contents}
   
