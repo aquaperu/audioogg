@@ -69,5 +69,5 @@ ffmpeg()
 
 export const fixPathAudio = (recursoAssets:string)=>{
    console.log(`Starting directory: ${process.cwd()}`);
-   return `${path.join(process.cwd(),'/','dist/src/',recursoAssets)}`
+   return `${path.join(process.cwd(),'/','../dist/src/',recursoAssets)}`
 }
