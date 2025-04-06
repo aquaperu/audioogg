@@ -20,24 +20,21 @@ export class AppController {
   @Post('myogg')
   async agregaRegistro(@Body() cuerpo:any){
     //lista las carpetas
-    const dos = fs.readdirSync(process.cwd())
-    console.log("lista carpetas:",dos)
-    console.log("iniciando la conversion")
     const res = cuerpo.base64 
     const base = fixPathAudio("filteName.oga")
     const audiomp3 = fixPathAudio("audio.mp3")
     
     //base64 to oga
     try {  
-      await fs.promises.writeFile(base , Buffer.from(res, 'base64'));//genera el archivo oga
-      
-      
+      await fs.promises.writeFile(base , Buffer.from(res, 'base64'));//genera el archivo oga  
       console.log({status: 'success' });
+      console.log("la ruta donde se guardó",path.join(process.cwd(),"/dist/src") )
     } catch (error) {
       console.log('ERROR WRITE FILE : ', error);
     }
      
     //oga to mp3
+    /*
     try {
       
       const inputOgxFile = await fs.promises.readFile(base, 'utf8'); // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
@@ -53,7 +50,7 @@ export class AppController {
       }
     } catch (error) {
       console.log('ERROR READ FILE : ', error);
-    }  
+    }  */
     
     //mp3 to base64
     
