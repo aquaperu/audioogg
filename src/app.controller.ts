@@ -19,13 +19,17 @@ export class AppController {
   }
   @Post('myogg')
   async agregaRegistro(@Body() cuerpo:any){
+    //lista las carpetas
+    const dos = fs.readdirSync(process.cwd())
+    console.log("lista carpetas:",dos)
     console.log("iniciando la conversion")
     const res = cuerpo.base64 
     const base = fixPathAudio("filteName.oga")
     const audiomp3 = fixPathAudio("audio.mp3")
     //base64 to oga
     try {
-      await fs.promises.writeFile(base ,res,'base64');//genera el archivo oga
+      
+      await fs.promises.writeFile(base , Buffer.from(res, 'base64'));//genera el archivo oga
       console.log({status: 'success' });
     } catch (error) {
       console.log('ERROR WRITE FILE : ', error);
