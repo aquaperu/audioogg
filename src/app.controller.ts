@@ -30,8 +30,8 @@ export class AppController {
     //base64 to oga
     try {  
       await fs.promises.writeFile(base , Buffer.from(res, 'base64'));//genera el archivo oga
-      const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-      console.log(uno)
+      
+      
       console.log({status: 'success' });
     } catch (error) {
       console.log('ERROR WRITE FILE : ', error);
@@ -40,12 +40,14 @@ export class AppController {
     //oga to mp3
     try {
       
-      const inputOgxFile = await fs.promises.readFile(base, 'binary');; // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
+      const inputOgxFile = await fs.promises.readFile(base, 'binary'); // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
   
       const outputMp3File = path.join(audiomp3)
       try {
         await convertOgxToMp3(inputOgxFile, outputMp3File);
         console.log(`Archivo convertido guardado en: ${outputMp3File}`);
+        const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+        console.log(uno)
         
       } catch (error) {
         console.error('La conversión falló:', error);
@@ -56,15 +58,15 @@ export class AppController {
     
     //mp3 to base64
     
-    const base64String = audiomp3;
+    /*const base64String = audiomp3;
     const contents = fs.readFileSync(base64String, {encoding: 'base64'});
     //borrara los dos archivos
     console.log("borrando los dos archivos")
     fs.unlinkSync(audiomp3)
     fs.unlinkSync(base)
     console.log({"bybase64":contents})
-
-    return {"bybase64":contents}
+*/
+    return {"bybase64":"contents"}
   
   }
 }
