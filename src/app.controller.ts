@@ -26,10 +26,12 @@ export class AppController {
     const res = cuerpo.base64 
     const base = fixPathAudio("filteName.oga")
     const audiomp3 = fixPathAudio("audio.mp3")
+    
     //base64 to oga
-    try {
-      
+    try {  
       await fs.promises.writeFile(base , Buffer.from(res, 'base64'));//genera el archivo oga
+      const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+      console.log(uno)
       console.log({status: 'success' });
     } catch (error) {
       console.log('ERROR WRITE FILE : ', error);
@@ -39,13 +41,12 @@ export class AppController {
     try {
       
       const inputOgxFile = await fs.promises.readFile(base, 'binary');; // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
-      
-      
-      
+  
       const outputMp3File = path.join(audiomp3)
       try {
         await convertOgxToMp3(inputOgxFile, outputMp3File);
         console.log(`Archivo convertido guardado en: ${outputMp3File}`);
+        
       } catch (error) {
         console.error('La conversión falló:', error);
       }
