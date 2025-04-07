@@ -45,7 +45,7 @@ export class AppController {
         await convertOgxToMp3(inputOgxFile, audiomp3);
         //console.log(`Archivo convertido guardado en: ${audiomp3}`);
         const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-        console.log(uno)
+        console.log("debe aparecer el mp3",uno)
         
       } catch (error) {
         console.error('La conversión falló:', error);
@@ -87,8 +87,8 @@ ffmpeg()
 
 export const fixPathAudio = (recursoAssets:string)=>{
    console.log(`Starting directory: ${process.cwd()}`);
-   const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-   console.log(uno)
+   /*const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+   console.log(uno)*/
    //const dos = fs.readdirSync()
    return `${path.join(process.cwd(),'/','dist/src',recursoAssets)}`
 }
