@@ -61,12 +61,12 @@ export class AppController {
             }
           };
         
-          return handleConvert
+          await handleConvert()
 
-          /*const base64String = audiomp3;
+          const base64String = audiomp3;
         console.log(base64String)
         const contents = fs.readFileSync(base64String, {encoding: 'base64'});
-         return {"bybase64":contents}*/
+         return {"bybase64":contents}
         
         /*const audioFilePath = base;
           const targetFormat = "mp3";
