@@ -41,9 +41,8 @@ export class AppController {
     try {  
       await fs.promises.writeFile(base , Buffer.from(res, 'base64'));//genera el archivo oga  
       console.log({status: 'success' });
-      console.log("la ruta donde se guardó",path.join(process.cwd(),"/dist/src") )
-      const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-      console.log("lista de archivos",uno)
+      console.log("la ruta donde se guardó el archivo oga",path.join(process.cwd(),"/dist/src") )
+      
       try {
       
         const inputOgxFile = base; // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
@@ -56,8 +55,7 @@ export class AppController {
           .then((result) => {
           console.log("Conversion successful!");
           console.log("Output File:", result.data);
-          const tres = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-          console.log(tres)
+          
           })
           .catch((error) => {
           console.error("Error occurred:", error);
@@ -67,20 +65,7 @@ export class AppController {
           //console.log(`Archivo convertido guardado en: ${audiomp3}`);
           //const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
           //console.log("debe aparecer el mp3",uno)
-          const uno = fs.readdirSync(path.join(process.cwd()))
-  const dos = fs.readdirSync(path.join(process.cwd(),'/','dist'))
-  const tres = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-  const cuatro = fs.readdirSync(path.join(process.cwd(),'/','src'))
-  
-  console.log("en la raiz",uno)
-  console.log("en dist",dos)
-  console.log("en dist_src",tres)
-  console.log("en src",cuatro)
-
-
-
-
-          
+         
         } catch (error) {
           console.error('La conversión falló:', error);
         }
@@ -91,6 +76,8 @@ export class AppController {
     } catch (error) {
       console.log('ERROR WRITE FILE : ', error);
     }
+    const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+      console.log("lista de archivos incluido el mp3",uno)
      
     //oga to mp3
     
