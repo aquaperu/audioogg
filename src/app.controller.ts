@@ -56,6 +56,8 @@ export class AppController {
           .then((result) => {
           console.log("Conversion successful!");
           console.log("Output File:", result.data);
+          const tres = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+          console.log(tres)
           })
           .catch((error) => {
           console.error("Error occurred:", error);
