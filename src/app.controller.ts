@@ -8,6 +8,10 @@ var ffmpeg = require('fluent-ffmpeg')
   ffmpeg.setFfmpegPath(ffmpegPath)
   import { Buffer } from "buffer";
 
+  const { convertAndSaveAudio } = require("light-audio-converter");
+
+  
+
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
@@ -36,7 +40,19 @@ export class AppController {
         const inputOgxFile = base; // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
     
         try {
-          await convertOgxToMp3(inputOgxFile, audiomp3);
+          const audioFilePath = base;
+          const targetFormat = "mp3";
+          const outputFilePath = audiomp3;
+          convertAndSaveAudio(audioFilePath, targetFormat, outputFilePath)
+          .then((result) => {
+          console.log("Conversion successful!");
+          console.log("Output File:", result.data);
+          })
+          .catch((error) => {
+          console.error("Error occurred:", error);
+          });
+          
+          //await convertOgxToMp3(inputOgxFile, audiomp3);
           //console.log(`Archivo convertido guardado en: ${audiomp3}`);
           //const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
           //console.log("debe aparecer el mp3",uno)
@@ -109,3 +125,4 @@ export const fixPathAudio = (recursoAssets:string)=>{
    //const dos = fs.readdirSync()
    return `${path.join(process.cwd(),'/','dist/src',recursoAssets)}`
 }
+
