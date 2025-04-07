@@ -41,20 +41,26 @@ export class AppController {
     try {  
       await fs.promises.writeFile(base , Buffer.from(res, 'base64'));//genera el archivo oga  
       console.log({status: 'success' });
-      console.log("la ruta donde se guardó el archivo oga",path.join(process.cwd(),"/dist/src") )
+      console.log("la ruta donde se guardó el archivo oga",base)
       
       try {
       
         const inputOgxFile = base; // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
     
         try {
-          const joder = async()=>{
-            await convertOgxToMp3(inputOgxFile, audiomp3)
-            console.log("haber convertido",path.join(process.cwd(),"/dist/src"))
+          // Ejemplo de uso:
+          const inputFilePath = base; // Reemplaza con la ruta de tu archivo .oga
+          const outputFilePath = audiomp3; // Reemplaza con la ruta donde guardar el archivo .mp3
 
+          const joder = async()=>{ await convertOgaToMp3(inputFilePath, outputFilePath)
+          
+        }
+        await joder()
+          const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+          console.log("lista de archivos incluido el mp3",uno)
+          const contents = fs.readFileSync(audiomp3, {encoding: 'base64'});
+          return {"mybase64":contents}
 
-          }
-          await joder()
           /*const handleConvert = async () => {     
             try {
               /*const audioFilePath = base;
@@ -83,14 +89,14 @@ export class AppController {
         
           //await handleConvert()
 
-          const base64String = audiomp3;
-          const uno = fs.readdirSync(base64String)
-          console.log("lista de archivos incluido el mp3",uno)
+          //const base64String = audiomp3;
+          //const uno = fs.readdirSync(base64String)
+          //console.log("lista de archivos incluido el mp3",uno)
         
-          const contents = fs.readFileSync(base64String, {encoding: 'base64'});
+          //const contents = fs.readFileSync(base64String, {encoding: 'base64'});
         //var base64str = base64_encode('/opt/render/project/src/output.mp3');
         //console.log(base64str); 
-        return {"bybase64":contents}
+        return {"bybase64":"contents"}
         
         /*const audioFilePath = base;
           const targetFormat = "mp3";
