@@ -71,7 +71,7 @@ export class AppController {
 }
 
 async function convertOgxToMp3(inputFilePath: string, outputFilePath: string): Promise<void> {
-  var outStream = fs.createWriteStream('./output.mp3');
+  var outStream = fs.createWriteStream('output.mp3');
   const uno = fs.readdirSync(path.join(process.cwd()))
   const dos = fs.readdirSync(path.join(process.cwd(),'/','dist'))
   const tres = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
