@@ -81,7 +81,7 @@ ffmpeg()
 .on('exit', () => console.log('Audio recorder exited'))
 .on('close', () => console.log('Audio recorder closed'))
 .on('end', () => console.log('Audio Transcoding succeeded !'))
-.pipe(outStream, { end: true }).save();
+.pipe(outStream, { end: true });
 }
 
 
