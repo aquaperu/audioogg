@@ -31,33 +31,48 @@ export class AppController {
       console.log("la ruta donde se guardó",path.join(process.cwd(),"/dist/src") )
       const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
       console.log("lista de archivos",uno)
+      try {
+      
+        const inputOgxFile = base; // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
+    
+        try {
+          await convertOgxToMp3(inputOgxFile, audiomp3);
+          //console.log(`Archivo convertido guardado en: ${audiomp3}`);
+          //const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+          //console.log("debe aparecer el mp3",uno)
+          const uno = fs.readdirSync(path.join(process.cwd()))
+  const dos = fs.readdirSync(path.join(process.cwd(),'/','dist'))
+  const tres = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+  const cuatro = fs.readdirSync(path.join(process.cwd(),'/','src'))
+  
+  console.log("en la raiz",uno)
+  console.log("en dist",dos)
+  console.log("en dist_src",tres)
+  console.log("en src",cuatro)
+
+
+
+
+          
+        } catch (error) {
+          console.error('La conversión falló:', error);
+        }
+      } catch (error) {
+        console.log('ERROR READ FILE : ', error);
+      }  
+    
     } catch (error) {
       console.log('ERROR WRITE FILE : ', error);
     }
      
     //oga to mp3
     
-    try {
-      
-      const inputOgxFile = base; // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
-  
-      try {
-        await convertOgxToMp3(inputOgxFile, audiomp3);
-        //console.log(`Archivo convertido guardado en: ${audiomp3}`);
-        //const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-        //console.log("debe aparecer el mp3",uno)
-        
-      } catch (error) {
-        console.error('La conversión falló:', error);
-      }
-    } catch (error) {
-      console.log('ERROR READ FILE : ', error);
-    }  
+    
     
     //mp3 to base64
     
-    const base64String = audiomp3;
-    console.log(base64String)
+    //const base64String = audiomp3;
+    //console.log(base64String)
     //const contents = fs.readFileSync(base64String, {encoding: 'base64'});
     /*//borrara los dos archivos
     console.log("borrando los dos archivos")
@@ -72,15 +87,7 @@ export class AppController {
 
 async function convertOgxToMp3(inputFilePath: string, outputFilePath: string): Promise<void> {
   var outStream = fs.createWriteStream('output.mp3');
-  const uno = fs.readdirSync(path.join(process.cwd()))
-  const dos = fs.readdirSync(path.join(process.cwd(),'/','dist'))
-  const tres = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-  const cuatro = fs.readdirSync(path.join(process.cwd(),'/','src'))
   
-  console.log("en la raiz",uno)
-  console.log("en dist",dos)
-  console.log("en dist_src",tres)
-  console.log("en src",cuatro)
 
 
 ffmpeg()
