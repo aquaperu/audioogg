@@ -86,7 +86,7 @@ export class AppController {
 }
 
 async function convertOgxToMp3(inputFilePath: string, outputFilePath: string): Promise<void> {
-  var outStream = fs.createWriteStream('output.mp3');
+  var outStream = fs.createWriteStream('./output.mp3');
   
 
 
