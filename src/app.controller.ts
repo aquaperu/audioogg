@@ -44,8 +44,8 @@ export class AppController {
       try {
         await convertOgxToMp3(inputOgxFile, audiomp3);
         //console.log(`Archivo convertido guardado en: ${audiomp3}`);
-        //const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-        //console.log(uno)
+        const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+        console.log(uno)
         
       } catch (error) {
         console.error('La conversión falló:', error);
@@ -56,9 +56,10 @@ export class AppController {
     
     //mp3 to base64
     
-    /*const base64String = audiomp3;
-    const contents = fs.readFileSync(base64String, {encoding: 'base64'});
-    //borrara los dos archivos
+    const base64String = audiomp3;
+    console.log(base64String)
+    //const contents = fs.readFileSync(base64String, {encoding: 'base64'});
+    /*//borrara los dos archivos
     console.log("borrando los dos archivos")
     fs.unlinkSync(audiomp3)
     fs.unlinkSync(base)
@@ -80,8 +81,7 @@ ffmpeg()
 .on('exit', () => console.log('Audio recorder exited'))
 .on('close', () => console.log('Audio recorder closed'))
 .on('end', () => console.log('Audio Transcoding succeeded !'))
-.pipe(outStream, { end: true });
-  
+.pipe(outStream, { end: true }).save();
 }
 
 
