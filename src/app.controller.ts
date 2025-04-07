@@ -71,7 +71,7 @@ export class AppController {
           console.log("lista de archivos incluido el mp3",uno)
         
         const contents = fs.readFileSync(base64String, {encoding: 'base64'});
-        var base64str = base64_encode('/opt/render/project/src/dist/src/audio.mp3');
+        var base64str = base64_encode('/opt/render/project/src/output.mp3');
         console.log(base64str); 
         return {"bybase64":"contents"}
         
