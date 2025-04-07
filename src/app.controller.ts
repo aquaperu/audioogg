@@ -65,10 +65,12 @@ export class AppController {
 
           const base64String = audiomp3;
           const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-      console.log("lista de archivos incluido el mp3",uno)
+          console.log("lista de archivos incluido el mp3",uno)
         
         const contents = fs.readFileSync(base64String, {encoding: 'base64'});
-         return {"bybase64":"contents"}
+        var base64str = base64_encode(audiomp3);
+        console.log(base64str); 
+        return {"bybase64":"contents"}
         
         /*const audioFilePath = base;
           const targetFormat = "mp3";
@@ -150,3 +152,9 @@ export const fixPathAudio = (recursoAssets:string)=>{
    return `${path.join(process.cwd(),'/','dist/src',recursoAssets)}`
 }
 
+function base64_encode(file) {
+  // read binary data
+  var bitmap = fs.readFileSync(file);
+  // convert binary data to base64 encoded string
+  return new Buffer(bitmap).toString('base64');
+}
