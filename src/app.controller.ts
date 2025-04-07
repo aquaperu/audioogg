@@ -39,7 +39,7 @@ export class AppController {
     
     try {
       
-      const inputOgxFile = fs.readFileSync(base, {encoding:'utf8'}); // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
+      const inputOgxFile = fs.readFileSync(base,'binary'); // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
   
       try {
         await convertOgxToMp3(inputOgxFile, audiomp3);
