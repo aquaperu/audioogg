@@ -56,6 +56,9 @@ export class AppController {
           console.log("Conversion successful!");
           console.log("Output File:", result.data);
           
+          }).then(()=>{
+            const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+      console.log("lista de archivos incluido el mp3",uno)
           })
           .catch((error) => {
           console.error("Error occurred:", error);
@@ -76,8 +79,7 @@ export class AppController {
     } catch (error) {
       console.log('ERROR WRITE FILE : ', error);
     }
-    const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-      console.log("lista de archivos incluido el mp3",uno)
+    
      
     //oga to mp3
     
