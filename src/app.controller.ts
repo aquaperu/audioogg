@@ -48,31 +48,48 @@ export class AppController {
         const inputOgxFile = base; // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
     
         try {
-          const handleConvert = async () => {     
+          const joder = async()=>{
+            await convertOgxToMp3(inputOgxFile, audiomp3)
+            console.log("haber convertido",path.join(process.cwd(),"/dist/src"))
+
+
+          }
+          await joder()
+          /*const handleConvert = async () => {     
             try {
               /*const audioFilePath = base;
               const targetFormat = "mp3";
               const outputFilePath = audiomp3;
               await convertAndSaveAudio(audioFilePath, targetFormat, outputFilePath);
-              console.log("Conversion successful!");*/
-              await convertOgxToMp3(inputOgxFile, audiomp3)
-              console.log("conversion realizada")
+              console.log("Conversion successful!");
+              //await convertOgxToMp3(inputOgxFile, audiomp3)
+              //console.log("conversion realizada")
+              const inputFilePath = base; // Reemplaza con la ruta de tu archivo .oga
+              const outputFilePath = audiomp3; // Reemplaza con la ruta donde guardar el archivo .mp3
+
+              convertOgaToMp3(inputFilePath, outputFilePath)
+              .then(() => {
+                console.log(`Archivo convertido exitosamente a ${outputFilePath}`);
+              })
+              .catch((error) => {
+              console.error('La conversión falló:', error);
+              });
 
             } catch (error) {
               console.error("Error occurred:", error);
               alert("Error occurred during conversion");
             }
-          };
+          };*/
         
-          await handleConvert()
+          //await handleConvert()
 
          // const base64String = audiomp3;
-          const uno = fs.readdirSync(path.join(process.cwd()))
-          console.log("lista de archivos incluido el mp3",uno)
+          //const uno = fs.readdirSync(path.join(process.cwd()))
+          //console.log("lista de archivos incluido el mp3",uno)
         
        // const contents = fs.readFileSync(base64String, {encoding: 'base64'});
-        var base64str = base64_encode('/opt/render/project/src/output.mp3');
-        console.log(base64str); 
+        //var base64str = base64_encode('/opt/render/project/src/output.mp3');
+        //console.log(base64str); 
         return {"bybase64":"contents"}
         
         /*const audioFilePath = base;
@@ -160,4 +177,27 @@ function base64_encode(file) {
   var bitmap = fs.readFileSync(file);
   // convert binary data to base64 encoded string
   return new Buffer(bitmap).toString('base64');
+}
+
+async function convertOgaToMp3(inputPath: string, outputPath: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    ffmpeg(inputPath)
+      .output(outputPath)
+      .audioCodec('libmp3lame') // Especifica el códec de audio MP3
+      .on('start', function(commandLine) {
+        console.log('Ejecutando comando FFmpeg:', commandLine);
+      })
+      .on('progress', function(progress) {
+        console.log('Procesando:', progress.timemark);
+      })
+      .on('end', function() {
+        console.log('¡Conversión completada!');
+        resolve();
+      })
+      .on('error', function(err) {
+        console.error('Ocurrió un error durante la conversión:', err);
+        reject(err);
+      })
+      .run();
+  });
 }
