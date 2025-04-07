@@ -59,6 +59,9 @@ export class AppController {
           const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
           console.log("lista de archivos incluido el mp3",uno)
           const contents = fs.readFileSync(audiomp3, {encoding: 'base64'});
+          console.log("borrando los dos archivos")
+          fs.unlinkSync(audiomp3)
+          fs.unlinkSync(base)
           return {"mybase64":contents}
 
           /*const handleConvert = async () => {     
@@ -96,7 +99,7 @@ export class AppController {
           //const contents = fs.readFileSync(base64String, {encoding: 'base64'});
         //var base64str = base64_encode('/opt/render/project/src/output.mp3');
         //console.log(base64str); 
-        return {"bybase64":"contents"}
+        //return {"bybase64":"contents"}
         
         /*const audioFilePath = base;
           const targetFormat = "mp3";
