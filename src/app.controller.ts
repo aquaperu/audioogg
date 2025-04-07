@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, ConsoleLogger, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import * as fs from 'fs'
 import * as path from 'path';
@@ -50,11 +50,14 @@ export class AppController {
         try {
           const handleConvert = async () => {     
             try {
-              const audioFilePath = base;
+              /*const audioFilePath = base;
               const targetFormat = "mp3";
               const outputFilePath = audiomp3;
               await convertAndSaveAudio(audioFilePath, targetFormat, outputFilePath);
-              console.log("Conversion successful!");
+              console.log("Conversion successful!");*/
+              await convertOgxToMp3(inputOgxFile, audiomp3)
+              console.log("conversion realizada")
+
             } catch (error) {
               console.error("Error occurred:", error);
               alert("Error occurred during conversion");
