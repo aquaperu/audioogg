@@ -48,7 +48,27 @@ export class AppController {
         const inputOgxFile = base; // Reemplaza 'audio.ogx' con la ruta real de tu archivo .ogx
     
         try {
-          const audioFilePath = base;
+          const handleConvert = async () => {     
+            try {
+              const audioFilePath = base;
+              const targetFormat = "mp3";
+              const outputFilePath = audiomp3;
+              await convertAndSaveAudio(audioFilePath, targetFormat, outputFilePath);
+              console.log("Conversion successful!");
+            } catch (error) {
+              console.error("Error occurred:", error);
+              alert("Error occurred during conversion");
+            }
+          };
+        
+          //return handleConvert
+
+          const base64String = audiomp3;
+        console.log(base64String)
+        const contents = fs.readFileSync(base64String, {encoding: 'base64'});
+         return {"bybase64":contents}
+        
+        /*const audioFilePath = base;
           const targetFormat = "mp3";
           const outputFilePath = audiomp3;
           convertAndSaveAudio(audioFilePath, targetFormat, outputFilePath)
@@ -59,10 +79,12 @@ export class AppController {
           }).then(()=>{
             const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
       console.log("lista de archivos incluido el mp3",uno)
-          })
+          
+    })
           .catch((error) => {
           console.error("Error occurred:", error);
           });
+          */
           
           //await convertOgxToMp3(inputOgxFile, audiomp3);
           //console.log(`Archivo convertido guardado en: ${audiomp3}`);
@@ -96,7 +118,7 @@ export class AppController {
     fs.unlinkSync(base)
     console.log({"bybase64":contents})
 */
-    return {"bybase64":"contents"}
+    //return {"bybase64":"contents"}
   
   }
 }
