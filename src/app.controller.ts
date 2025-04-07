@@ -66,11 +66,11 @@ export class AppController {
         
           await handleConvert()
 
-          const base64String = audiomp3;
-          const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+         // const base64String = audiomp3;
+          const uno = fs.readdirSync(path.join(process.cwd()))
           console.log("lista de archivos incluido el mp3",uno)
         
-        const contents = fs.readFileSync(base64String, {encoding: 'base64'});
+       // const contents = fs.readFileSync(base64String, {encoding: 'base64'});
         var base64str = base64_encode('/opt/render/project/src/output.mp3');
         console.log(base64str); 
         return {"bybase64":"contents"}
