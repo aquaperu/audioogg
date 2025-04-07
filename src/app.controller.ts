@@ -18,7 +18,16 @@ export class AppController {
 
   @Get("myogg1")
   getHello(): string {
-    
+    const uno = fs.readdirSync(path.join(process.cwd()))
+  const dos = fs.readdirSync(path.join(process.cwd(),'/','dist'))
+  const tres = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+  const cuatro = fs.readdirSync(path.join(process.cwd(),'/','src'))
+  
+  console.log("en la raiz",uno)
+  console.log("en dist",dos)
+  console.log("en dist_src",tres)
+  console.log("en src",cuatro)
+
     return this.appService.getHello();
   }
   @Post('myogg')
