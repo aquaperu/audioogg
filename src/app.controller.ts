@@ -44,8 +44,8 @@ export class AppController {
       try {
         await convertOgxToMp3(inputOgxFile, audiomp3);
         //console.log(`Archivo convertido guardado en: ${audiomp3}`);
-        const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
-        console.log("debe aparecer el mp3",uno)
+        //const uno = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+        //console.log("debe aparecer el mp3",uno)
         
       } catch (error) {
         console.error('La conversión falló:', error);
@@ -72,6 +72,16 @@ export class AppController {
 
 async function convertOgxToMp3(inputFilePath: string, outputFilePath: string): Promise<void> {
   var outStream = fs.createWriteStream(outputFilePath);
+  const uno = fs.readdirSync(path.join(process.cwd()))
+  const dos = fs.readdirSync(path.join(process.cwd(),'/','dist'))
+  const tres = fs.readdirSync(path.join(process.cwd(),'/','dist/src'))
+  const cuatro = fs.readdirSync(path.join(process.cwd(),'/','src'))
+  
+  console.log("en la raiz",uno)
+  console.log("en dist",dos)
+  console.log("en dist_src",tres)
+  console.log("en src",cuatro)
+
 
 ffmpeg()
 .input(inputFilePath)
